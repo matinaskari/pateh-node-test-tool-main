@@ -53,9 +53,7 @@ let tableBody = document.getElementById("main") as HTMLElement;
 // Renders a single row on the table
 
 function updateRow(rowId: number, body: Test) {
-  let targetRow = document.getElementById(
-    `table-row-${body.id}`
-  ) as HTMLElement;
+  let targetRow = document.getElementById(`table-row-${rowId}`) as HTMLElement;
 
   targetRow.innerHTML = `<th scope="row">${body.id + 1}</th><td>${
     body.testPeriod
@@ -81,6 +79,8 @@ const main = async () => {
   rows.forEach(addRow);
   // Add any newly created message to the list in real-time
   app.service("tables").on("created", addRow);
+  // Update each row when it changed
+  app.service("tables").on("updated", updateRow);
 };
 
 main();

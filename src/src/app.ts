@@ -32,14 +32,14 @@ class App {
     this.app.use(express.static(join(__dirname, "../public")));
     this.app.configure(express.rest());
     this.app.configure(socketio());
-    this.app.use("/tables", new TableService());
+    this.app.use("tables", new TableService());
     this.app.use(express.errorHandler());
     this.app.on("connection", (connection) =>
       this.app.channel("everybody").join(connection)
     );
     this.app.publish(() => this.app.channel("everybody"));
     this.app.get("/update-row", (req: Request, res: Response) => {
-      this.app.service("tables").updateRow();
+      this.app.service("tables").update(0, {});
       res.send("ok");
     });
   }

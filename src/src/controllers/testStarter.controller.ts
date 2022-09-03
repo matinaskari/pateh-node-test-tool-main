@@ -24,7 +24,7 @@ export default class TestStarterController extends Controller {
 
     console.log(req.body);
 
-    const data = service.exec(numberOfRequests, testPeriod, testMethod);
+    const data = service.exec(numberOfRequests, testPeriod, testMethod, rowId);
 
     this.sendSuccess(res, data);
   };

@@ -46,7 +46,11 @@ class TestService {
     return this.flights;
   }
 
-  private async runner(testPeriod: number, testMethod: "POST" | "GET") {
+  private async runner(
+    testPeriod: number,
+    testMethod: "POST" | "GET",
+    rowId: number
+  ) {
     for (let flight of this.flights) {
       await this.sleep(testPeriod);
       await util.send(
@@ -54,17 +58,19 @@ class TestService {
         testMethod,
         flight
       );
+      await util.send(`http://localhost:5000/tables/${rowId}`, "PUT", flight);
     }
   }
 
   public exec(
     numberOfRequests: number,
     testPeriod: number,
-    testMethod: "POST" | "GET"
+    testMethod: "POST" | "GET",
+    rowId: number
   ) {
     this.flights = [];
     let data = this.create(numberOfRequests);
-    this.runner(testPeriod, testMethod);
+    this.runner(testPeriod, testMethod, rowId);
 
     return data;
   }
