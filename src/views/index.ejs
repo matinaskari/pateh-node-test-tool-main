@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pateh Node Test Tool</title>
+
+    <style>
+      /* Chrome, Safari, Edge, Opera */
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Firefox */
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+    </style>
+
+    <!-- bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <!--  -->
+  </head>
+  <body>
+
+    <!-- table -->
+    <div class="container">
+          <br />
+    <br />
+    <center>
+      <h1>Pateh Node Test Tool</h1>
+    </center>
+
+    <hr />
+      <div class="my-4">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#creationModal"
+        >
+          Create
+        </button>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Test Period(ms)</th>
+            <th scope="col">Response Time(ms)</th>
+            <th scope="col">Method</th>
+            <th scope="col">Number of Requests</th>
+            <th scope="col">Done Requests</th>
+          </tr>
+        </thead>
+        <tbody id="main"></tbody>
+      </table>
+    </div>
+    <!--  -->
+
+    <!-- creation modal -->
+    <div
+      class="modal fade"
+      id="creationModal"
+      tabindex="-1"
+      aria-labelledby="creationModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <!--  -->
+        <div class="modal-content">
+          <!--  -->
+          <div class="modal-header">
+            <!--  -->
+            <h5 class="modal-title" id="creationModalLabel">Add Test</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <!--  -->
+          <form id="creationForm">
+            <!--  -->
+            <div class="modal-body">
+              <!--  -->
+              <div class="mb-3">
+                <label class="form-label">Test Period</label>
+                <input
+                  value="500"
+                  type="number"
+                  class="form-control"
+                  name="testPeriod"
+                />
+              </div>
+              <!--  -->
+              <div class="mb-3">
+                <label class="form-label">Response Time</label>
+                <input
+                  value="500"
+                  type="number"
+                  class="form-control"
+                  name="responseTime"
+                />
+              </div>
+              <!--  -->
+              <div class="mb-3">
+                <label class="form-label">Request Method</label>
+                <select class="form-control" name="method" id="method">
+                  <option value="POST">POST</option>
+                  <option value="GET">GET</option>
+                </select>
+              </div>
+              <!--  -->
+              <div class="mb-3">
+                <label class="form-label">Number of Requests</label>
+                <input
+                  value="500"
+                  type="number"
+                  class="form-control"
+                  name="numberOfRequests"
+                />
+              </div>
+              <!--  -->
+              <div class="alert alert-danger d-none" id="alert" role="alert">
+                A simple danger alert—check it out!
+              </div>
+              <!--  -->
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+    <script src="/bundle.js"></script>
+    <!--  -->
+  </body>
+</html>
